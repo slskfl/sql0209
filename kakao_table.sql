@@ -52,12 +52,13 @@ CREATE TABLE `member`(
 	id	VARCHAR(50),
 	password	VARCHAR(50) 	NOT NULL,
 	name		VARCHAR(50) 	NOT NULL,
-    tel			VARCHAR(50) 	NOT NULL,
 	birthday 	Date 			NOT NULL,
 	email		VARCHAR(50) 	NOT NULL,
 	address		VARCHAR(50) 	NOT NULL,
 	PRIMARY 	KEY(id)
 );
+
+alter table `member` add  tel VARCHAR(50) 	NOT NULL;
 
 use kakao_bank;
 desc `member`;
@@ -86,5 +87,7 @@ FOREIGN KEY(order_id) REFERENCES `member`(id),
 FOREIGN KEY(product_id) REFERENCES `product`(serial)
 );
 
+alter table `order_list` add qty INT DEFAULT 1;
+alter table `order_list` drop price;
 use kakao_bank;
 desc `order_list`;

@@ -15,8 +15,14 @@ SHOW INDEX FROM `product`;
 CREATE VIEW view_order
 AS SELECT `order_list`.serial, 
 	`member`.id, `member`.name, `member`.tel, `member`.address, 
-    `product`.name AS product,`product`.standard, `product`.price, 
+    `product`.name AS product, `product`.standard, `product`.price, 
     `order_list`.qty, price*qty AS payment 
 FROM `order_list`, `member`, `product`
 WHERE `order_list`.order_id = `member`.id 
 	AND `order_list`.product_id = `product`.serial;
+    
+-- 테이블 및 뷰 조회하기
+show full tables in kakao_bank;
+
+-- 복원하는 데이터베이스 생성하기
+create database test_bank;
